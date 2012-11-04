@@ -36,7 +36,7 @@
 	require_once QA_INCLUDE_DIR.'Addons/domain-list.php';
 		
 	$categoryslugs=qa_request_parts(1);
-	$server_name =  $_SERVER['SERVER_NAME'];
+	$server_name =  preg_replace('#www.#', '', $_SERVER['SERVER_NAME']);
     if(empty($categoryslugs) && !empty($server_name) && in_array($server_name, $domain_lists) ){
 		$cityName = preg_replace('#www.|question.com#', '', $server_name);
 	    $categoryslugs = array($cityName);

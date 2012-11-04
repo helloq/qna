@@ -1,4 +1,5 @@
 <?php
 
-$domain_lists = array('japanquestion.com', 
-                     'newyorkquestion.com', 'ukquestion.com');
+$domain_lists = array('japanquestion.com',  'koreaquestion.com', 'indiaquestion.com', 'brazilquestion.com',
+                      'guangzhouquestion.com',
+                     'hongkongquestion.com', 'australiaquestion.com', 'egyptquestion.com', 'indonesiaquestion.com');
