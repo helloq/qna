@@ -35,14 +35,14 @@
 	require_once QA_INCLUDE_DIR.'qa-app-updates.php';
 	require_once QA_INCLUDE_DIR.'Addons/domain-list.php';
 		
-	$categoryslugs=qa_request_parts(1);
-	$countslugs=count($categoryslugs);
+	$categoryslugs=qa_request_parts(1);
 	$server_name =  $_SERVER['SERVER_NAME'];
     if(empty($categoryslugs) && !empty($server_name) && in_array($server_name, $domain_lists) ){
 		$cityName = preg_replace('#www.|question.com#', '', $server_name);
 	    $categoryslugs = array($cityName);
     }
-	
+
+	$countslugs=count($categoryslugs);
 	$sort=($countslugs && !QA_ALLOW_UNINDEXED_QUERIES) ? null : qa_get('sort');
 	$start=qa_get_start();
 	$userid=qa_get_logged_in_userid();
