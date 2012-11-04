@@ -32,7 +32,7 @@
 	require_once QA_INCLUDE_DIR.'qa-db-selects.php';
 	require_once QA_INCLUDE_DIR.'qa-app-format.php';
 	require_once QA_INCLUDE_DIR.'qa-app-q-list.php';
-	
+	require_once QA_INCLUDE_DIR.'Addons/domain-list.php';
 
 //	Get list of unanswered questions, allow per-category if QA_ALLOW_UNINDEXED_QUERIES set in qa-config.php
 
@@ -40,7 +40,13 @@
 		$categoryslugs=qa_request_parts(1);
 	else
 		$categoryslugs=null;
-
+    
+	$server_name =  $_SERVER['SERVER_NAME'];
+    if(empty($categoryslugs) && !empty($server_name) && in_array($server_name, $domain_lists) ){
+		$cityName = preg_replace('#www.|question.com#', '', $server_name);
+	    $categoryslugs = array($cityName);
+    }
+  
 	$countslugs=@count($categoryslugs);
 	$by=qa_get('by');
 	$start=qa_get_start();
