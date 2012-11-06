@@ -9,10 +9,10 @@ function getCategoryByDomain($categoryslugs, $domain_lists){
 		case "hongkongquestion.com":
            $categoryslugs = array('hong-kong');
 		   break;
-		case  "new-zealandquestion.com":
+		case  "newzealandquestion.com":
            $categoryslugs = array('new-zealand');
 		   break;
-	    case  "south-africaquestion.com":
+	    case  "southafricaquestion.com":
 		   $categoryslugs = array('south-africa');
 		   break;
 	}
