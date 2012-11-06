@@ -1,26 +1,9 @@
 <?php
-$domain_lists = array(
-'australiaquestion.com',
-//'bamahasquestion.com',
-'barbadosquestion.com', 'brazilquestion.com',
-'canadaquestion.com',
-//'chinaquestion.com',
-'guangzhouquestion.com',
-'dubaiquestion.com',
-'egyptquestion.com', 'europequestion.com',
-'hong-kongquestion.com',
-'icelandquestion.com', 'indiaquestion.com',
-'indonesiaquestion.com',
-'japanquestion.com',
-'kenyaquestion.com', 'koreaquestion.com',
-'laosquestion.com',
-'malaysiaquestion.com', 'mexicoquestion.com',
-//'monacaquestion.com',
-'new-zealandquestion.com',
-'phillipinesquestion.com',
-'singaporequestion.com',
-'south-africaquestion.com',
-'taiwanquestion.com', 'thailandquestion.com', 'tibetquestion.com', 'turkeyquestion.com',
-//'United States of Americaquestion.com',
-'vaticanquestion.com', 'vietnamquestion.com'
-);
+function getCategoryByDomain($categoryslugs, $domain_lists){
+	$server_name =  preg_replace('#www.#', '', $_SERVER['SERVER_NAME']);
+    if(empty($categoryslugs) && !empty($server_name) && in_array($server_name, $domain_lists) ){
+		$cityName = preg_replace('#www.|question.com#', '', $server_name);
+	    $categoryslugs = array($cityName);
+    }
+	return $categoryslugs;
+}

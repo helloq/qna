@@ -33,6 +33,7 @@
 	require_once QA_INCLUDE_DIR.'qa-app-format.php';
 	require_once QA_INCLUDE_DIR.'qa-app-updates.php';
     require_once QA_INCLUDE_DIR.'Addons/domain-list.php';
+	require_once QA_INCLUDE_DIR.'Addons/common-fun.php';
 
 //	Determine whether path begins with qa or not (question and answer listing can be accessed either way)
 
@@ -46,14 +47,8 @@
 	else
 		$slugs=array();
 	
-	$countslugs=count($slugs);
-		
-	$server_name =  preg_replace('#www.#', '', $_SERVER['SERVER_NAME']);
-    if(empty($slugs) && !empty($server_name) && in_array($server_name, $domain_lists) ){
-		$cityName = preg_replace('#www.|question.com#', '', $server_name);
-	    $slugs = array($cityName);
-    }
-
+	$countslugs=count($slugs);	
+    $slugs = getCategoryByDomain($slugs, $domain_lists);
 //	Get list of questions, other bits of information that might be useful
 	
 	$userid=qa_get_logged_in_userid();
